@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:56:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/05 18:20:18 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/07 17:51:26 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,19 +116,20 @@ int	main(int ac, char **av)
 	*stack_b = NULL;
 	ft_addtoa(arr, stack_a, ac);
 	free(arr);
+	ft_sort(stack_a, stack_b);
 	tmpa = *stack_a;
 	while (tmpa != NULL)
 	{
-		printf("%d\n", tmpa->value);
+		printf("%d\t%d\n", tmpa->index, tmpa->value);
 		tmpa = tmpa->next;
 	}
 	printf("\n");
 	tmpb = *stack_b;
 	while (tmpb != NULL)
 	{
-		printf("%d\n", tmpb->value);
+		printf("%d\t%d\n", tmpb->index, tmpb->value);
 		tmpb = tmpb->next;
 	}
-	system("leaks a.out");
+	// system("leaks a.out");
 	return (0);
 }

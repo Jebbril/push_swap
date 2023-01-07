@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:08:34 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/05 16:29:49 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/05 18:39:42 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_sb(t_node **stack_b)
 void	ft_ss(t_node **stack_a, t_node **stack_b)
 {
 	ft_sa(stack_a);
-	ft_sa(stack_b);
+	ft_sb(stack_b);
 }
 
 void	ft_pa(t_node **stack_a, t_node **stack_b)

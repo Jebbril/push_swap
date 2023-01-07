@@ -1,39 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_list.c                                      :+:      :+:    :+:   */
+/*   print_moves2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 16:04:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/07 18:01:49 by orakib           ###   ########.fr       */
+/*   Created: 2023/01/07 13:40:31 by orakib            #+#    #+#             */
+/*   Updated: 2023/01/07 13:50:35 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*ft_newnode(int value)
+void	ra(t_node **stack_a)
 {
-	t_node	*new;
-
-	new = malloc(sizeof(t_node));
-	if (!new)
-		return (NULL);
-	new->value = value;
-	new->index = 0;
-	new->next = NULL;
-	return (new);
+	ft_ra(stack_a);
+	write(1, "ra\n", 3);
 }
 
-void	ft_addback(t_node **head, t_node *node)
+void	rb(t_node **stack_b)
 {
-	t_node	*tmp;
+	ft_rb(stack_b);
+	write(1, "rb\n", 3);
+}
 
-	tmp = *head;
-	if (tmp == NULL)
-		tmp = node;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	tmp->next = node;
-	node->index = tmp->index + 1;
+void	rr(t_node **stack_a, t_node **stack_b)
+{
+	ft_rr(stack_a, stack_b);
+	write(1, "rr\n", 3);
+}
+
+void	rra(t_node **stack_a)
+{
+	ft_rra(stack_a);
+	write(1, "rra\n", 4);
+}
+
+void	rrb(t_node **stack_b)
+{
+	ft_rrb(stack_b);
+	write(1, "rrb\n", 4);
 }

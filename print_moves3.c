@@ -1,39 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_list.c                                      :+:      :+:    :+:   */
+/*   print_moves3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 16:04:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/07 18:01:49 by orakib           ###   ########.fr       */
+/*   Created: 2023/01/07 13:40:32 by orakib            #+#    #+#             */
+/*   Updated: 2023/01/07 18:09:27 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*ft_newnode(int value)
+void	rrr(t_node **stack_a, t_node **stack_b)
 {
-	t_node	*new;
-
-	new = malloc(sizeof(t_node));
-	if (!new)
-		return (NULL);
-	new->value = value;
-	new->index = 0;
-	new->next = NULL;
-	return (new);
-}
-
-void	ft_addback(t_node **head, t_node *node)
-{
-	t_node	*tmp;
-
-	tmp = *head;
-	if (tmp == NULL)
-		tmp = node;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	tmp->next = node;
-	node->index = tmp->index + 1;
+	ft_rrr(stack_a, stack_b);
+	write(1, "rrr\n", 4);
 }
