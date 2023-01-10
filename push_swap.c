@@ -6,20 +6,20 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:56:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/07 17:51:26 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:44:13 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_addtoa(int *arr, t_node **stack_a, int ac)
+void	ft_addtoa(int *arr, t_node **stack_a)
 {
 	int		i;
 	t_node	*tmp;
 
 	i = 0;
 	*stack_a = ft_newnode(arr[i++]);
-	while (i < (ac - 1))
+	while (i < 4)
 	{
 		tmp = ft_newnode(arr[i]);
 		ft_addback(stack_a, tmp);
@@ -71,25 +71,27 @@ int	ft_checkrepeat(int *arr, int ac)
 
 int	*ft_getnumbers(int ac, char **av)
 {
-	int	i;
-	int	*arr;
+	int		i;
+	int		*arr;
+	char	**str;
 
-	if (!arr)
-		return (0);
 	i = 0;
 	if (ac > 1)
 	{
-		arr = malloc((ac - 1) * sizeof(int));
-		while (i < (ac - 1))
+		str = ft_joinsplit(ac, av);
+		arr = malloc((ft_countelm(str) + 1) * sizeof(int));
+		while (str[i])
 		{
-			if (ft_checknumber(av[i + 1]))
+			if (ft_checknumber(str[i]))
 			{
 				free(arr);
 				return (NULL);
 			}
-			arr[i] = ft_atoi(av[i + 1]);
+			arr[i] = ft_atoi(str[i]);
+			free(str[i]);
 			i++;
 		}
+		free(str);
 		return (arr);
 	}
 	return (NULL);
@@ -114,22 +116,22 @@ int	main(int ac, char **av)
 	stack_a = malloc(sizeof(t_node));
 	stack_b = malloc(sizeof(t_node));
 	*stack_b = NULL;
-	ft_addtoa(arr, stack_a, ac);
+	ft_addtoa(arr, stack_a);
 	free(arr);
 	ft_sort(stack_a, stack_b);
-	tmpa = *stack_a;
-	while (tmpa != NULL)
-	{
-		printf("%d\t%d\n", tmpa->index, tmpa->value);
-		tmpa = tmpa->next;
-	}
-	printf("\n");
-	tmpb = *stack_b;
-	while (tmpb != NULL)
-	{
-		printf("%d\t%d\n", tmpb->index, tmpb->value);
-		tmpb = tmpb->next;
-	}
+	// tmpa = *stack_a;
+	// while (tmpa != NULL)
+	// {
+	// 	printf("%d\t%d\n", tmpa->index, tmpa->value);
+	// 	tmpa = tmpa->next;
+	// }
+	// printf("\n");
+	// tmpb = *stack_b;
+	// while (tmpb != NULL)
+	// {
+	// 	printf("%d\t%d\n", tmpb->index, tmpb->value);
+	// 	tmpb = tmpb->next;
+	// }
 	// system("leaks a.out");
 	return (0);
 }

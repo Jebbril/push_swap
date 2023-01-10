@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:19:11 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/07 18:09:14 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:44:41 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_node
 t_node	*ft_newnode(int value);
 void	ft_addback(t_node **head, t_node *node);
 int		ft_atoi(const char *str);
-void	ft_addtoa(int *arr, t_node **stack_a, int ac);
+void	ft_addtoa(int *arr, t_node **stack_a);
 void	ft_sa(t_node **stack_a);
 void	ft_sb(t_node **stack_b);
 void	ft_ss(t_node **stack_a, t_node **stack_b);
@@ -56,5 +56,11 @@ void	ft_sort(t_node **stack_a, t_node **stack_b);
 void	sort2(t_node **stack_a);
 void	sort3(t_node **stack_a);
 void	sort4(t_node **stack_a, t_node **stack_b);
+char	**ft_split(char const *s, char c);
+size_t	ft_strlen(const char *s);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(const char *s1);
+char	**ft_joinsplit(int ac, char **av);
+int	ft_countelm(char **str);
 
 #endif

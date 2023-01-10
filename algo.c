@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 18:22:48 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/07 18:40:04 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:05:08 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	ft_sort(t_node **stack_a, t_node **stack_b)
 		sort3(stack_a);
 	else if (c == 4)
 		sort4(stack_a, stack_b);
-	else if (c == 5)
-		sort5(stack_a, stack_b);
+	// else if (c == 5)
+	// 	sort5(stack_a, stack_b);
 	// else if (c > 5 && c < 500)
 	// 	sort100(stack_a, stack_b);
 	// else if (c >= 500)
@@ -56,29 +56,45 @@ void	sort3(t_node **stack_a)
 	first = *stack_a;
 	second = first->next;
 	third = second->next;
+	if (first->value < second->value && second->value < third->value)
+		return ;
 	if (third->value > first->value)
 	{
 		sa(stack_a);
 		if (first->value < second->value)
 			ra(stack_a);
+		return ;
 	}
-	else
+	if (second->value < first->value && second->value > third->value)
 	{
-		if (second->value < first->value && second->value > third->value)
-		{
-			sa(stack_a);
-			rra(stack_a);
-		}
-		else if (second->value < first->value && second->value < third->value)
-			ra(stack_a);
-		else
-			rra(stack_a);
+		sa(stack_a);
+		rra(stack_a);
 	}
+	else if (second->value < first->value && second->value < third->value)
+		ra(stack_a);
+	else
+		rra(stack_a);
 }
 
-void	sort5(t_node **stack_a, t_node **stack_b)
+void	sort4(t_node **stack_a, t_node **stack_b)
 {
-	pb(stack_a, stack_b);
+	int	i;
+	int	c;
+
+	i = 0;
+	c = 0;
 	pb(stack_a, stack_b);
 	sort3(stack_a);
+	while (1)
+	{
+		if ((*stack_b)->value < (*stack_a)->value
+			|| (*stack_b)->value > (*stack_a)->next->next->value)
+		{
+			pa(stack_a, stack_b);
+			break ;
+		}
+		ra(stack_a);
+	}
+	while ((*stack_a)->value > (*stack_a)->next->next->next->value)
+		rra(stack_a);
 }
