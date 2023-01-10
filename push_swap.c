@@ -6,20 +6,20 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:56:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/10 15:44:13 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:59:27 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_addtoa(int *arr, t_node **stack_a)
+void	ft_addtoa(int *arr, t_node **stack_a, int co)
 {
 	int		i;
 	t_node	*tmp;
 
 	i = 0;
 	*stack_a = ft_newnode(arr[i++]);
-	while (i < 4)
+	while (i < co)
 	{
 		tmp = ft_newnode(arr[i]);
 		ft_addback(stack_a, tmp);
@@ -43,7 +43,7 @@ int	ft_checknumber(char *str)
 	return (0);
 }
 
-int	ft_checkrepeat(int *arr, int ac)
+int	ft_checkrepeat(int *arr, int co)
 {
 	int	i;
 	int	j;
@@ -51,12 +51,12 @@ int	ft_checkrepeat(int *arr, int ac)
 	int	count;
 
 	i = 0;
-	while (i < (ac - 1))
+	while (i < co)
 	{
 		j = 0;
 		tmp = arr[i];
 		count = 0;
-		while (j < (ac - 1))
+		while (j < co)
 		{
 			if (tmp == arr[j])
 				count++;
@@ -69,7 +69,7 @@ int	ft_checkrepeat(int *arr, int ac)
 	return (0);
 }
 
-int	*ft_getnumbers(int ac, char **av)
+int	*ft_getnumbers(int ac, char **av, int *co)
 {
 	int		i;
 	int		*arr;
@@ -79,7 +79,8 @@ int	*ft_getnumbers(int ac, char **av)
 	if (ac > 1)
 	{
 		str = ft_joinsplit(ac, av);
-		arr = malloc((ft_countelm(str) + 1) * sizeof(int));
+		*co = ft_countelm(str);
+		arr = malloc(*co * sizeof(int));
 		while (str[i])
 		{
 			if (ft_checknumber(str[i]))
@@ -103,12 +104,14 @@ int	main(int ac, char **av)
 	int		*arr;
 	t_node	**stack_a;
 	t_node	**stack_b;
+	int		count;
 	t_node	*tmpa;
 	t_node	*tmpb;
 
 	i = 0;
-	arr = ft_getnumbers(ac, av);
-	if (!arr || ft_checkrepeat(arr, ac) == 1)
+	count = 0;
+	arr = ft_getnumbers(ac, av, &count);
+	if (!arr || ft_checkrepeat(arr, count) == 1)
 	{
 		write(1, "Error\n", 6);
 		return (0);
@@ -116,7 +119,7 @@ int	main(int ac, char **av)
 	stack_a = malloc(sizeof(t_node));
 	stack_b = malloc(sizeof(t_node));
 	*stack_b = NULL;
-	ft_addtoa(arr, stack_a);
+	ft_addtoa(arr, stack_a, count);
 	free(arr);
 	ft_sort(stack_a, stack_b);
 	// tmpa = *stack_a;
