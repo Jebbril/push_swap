@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 18:22:48 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/10 15:05:08 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/13 17:13:50 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,27 @@ void	sort3(t_node **stack_a)
 void	sort4(t_node **stack_a, t_node **stack_b)
 {
 	int	i;
-	int	c;
 
 	i = 0;
-	c = 0;
 	pb(stack_a, stack_b);
 	sort3(stack_a);
-	while (1)
+	if ((*stack_b)->value < (*stack_a)->value)
+		pa(stack_a, stack_b);
+	else if ((*stack_b)->value > (*stack_a)->next->next->value)
 	{
-		if ((*stack_b)->value < (*stack_a)->value
-			|| (*stack_b)->value > (*stack_a)->next->next->value)
-		{
-			pa(stack_a, stack_b);
-			break ;
-		}
+		pa(stack_a, stack_b);
 		ra(stack_a);
 	}
-	while ((*stack_a)->value > (*stack_a)->next->next->next->value)
-		rra(stack_a);
+	else
+	{
+		while (!((*stack_b)->value < (*stack_a)->value
+				&& (*stack_b)->value > (*stack_a)->next->next->value))
+		{
+			ra(stack_a);
+			i++;
+		}
+		pa(stack_a, stack_b);
+		while (--i >= 0)
+			rra(stack_a);
+	}
 }

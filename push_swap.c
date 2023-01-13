@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:56:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/10 15:59:27 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/13 17:19:16 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,9 @@ int	main(int ac, char **av)
 	t_node	**stack_a;
 	t_node	**stack_b;
 	int		count;
-	t_node	*tmpa;
-	t_node	*tmpb;
+	t_lis	lis;
+	// t_node	*tmpa;
+	// t_node	*tmpb;
 
 	i = 0;
 	count = 0;
@@ -115,6 +116,12 @@ int	main(int ac, char **av)
 	{
 		write(1, "Error\n", 6);
 		return (0);
+	}
+	lis = ft_lis(arr, count);
+	while (i < count)
+	{
+		printf("index : %d\t number : %d\t lis : %d\tprevindex : %d\n", i, arr[i], lis.lissize[i], lis.previndex[i]);
+		i++;
 	}
 	stack_a = malloc(sizeof(t_node));
 	stack_b = malloc(sizeof(t_node));

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:19:11 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/10 15:59:01 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/13 16:52:19 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct s_lis
+{
+	int	*lissize;
+	int	*previndex;
+
+}	t_lis;
 
 typedef struct s_node
 {
@@ -56,11 +63,15 @@ void	ft_sort(t_node **stack_a, t_node **stack_b);
 void	sort2(t_node **stack_a);
 void	sort3(t_node **stack_a);
 void	sort4(t_node **stack_a, t_node **stack_b);
+void	sort5(t_node **stack_a, t_node **stack_b);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 char	**ft_joinsplit(int ac, char **av);
-int	ft_countelm(char **str);
+int		ft_countelm(char **str);
+t_lis	ft_getlis(int *arr, int count);
+void	ft_filllis(int *arr, t_lis lis, int count);
+t_lis	ft_lis(int *arr, int count);
 
 #endif
