@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:19:11 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/13 16:52:19 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/14 18:29:43 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,23 @@ typedef struct s_lis
 {
 	int	*lissize;
 	int	*previndex;
-
+	int	*seq;
 }	t_lis;
 
 typedef struct s_node
 {
 	int				value;
 	int				index;
+	int				lis;
 	struct s_node	*next;
 
 }	t_node;
 
 t_node	*ft_newnode(int value);
+t_node	*ft_lastnode(t_node **head);
 void	ft_addback(t_node **head, t_node *node);
 int		ft_atoi(const char *str);
-void	ft_addtoa(int *arr, t_node **stack_a, int co);
+void	ft_addtoa(int *arr, t_lis lis, t_node **stack_a, int co);
 void	ft_sa(t_node **stack_a);
 void	ft_sb(t_node **stack_b);
 void	ft_ss(t_node **stack_a, t_node **stack_b);
@@ -73,5 +75,7 @@ int		ft_countelm(char **str);
 t_lis	ft_getlis(int *arr, int count);
 void	ft_filllis(int *arr, t_lis lis, int count);
 t_lis	ft_lis(int *arr, int count);
+void	push_unmarked(t_node **stack_a, t_node **stack_b);
+void	pushback(t_node **stack_a, t_node **stack_b);
 
 #endif

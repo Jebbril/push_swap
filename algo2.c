@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:12:02 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/13 17:20:20 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/14 16:08:38 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,24 @@ t_lis	ft_getlis(int *arr, int count)
 	i = 0;
 	lis.lissize = malloc(count * sizeof(int));
 	lis.previndex = malloc(count * sizeof(int));
+	lis.seq = malloc(count * sizeof(int));
 	while (i < count)
 	{
 		lis.lissize[i] = 1;
 		lis.previndex[i] = -1;
+		lis.seq[i] = 0;
 		i++;
 	}
 	return (lis);
 }
+
 void	ft_filllis(int *arr, t_lis lis, int count)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while(i < count)
+	while (i < count)
 	{
 		j = 0;
 		while (j < i)
@@ -53,24 +56,41 @@ void	ft_filllis(int *arr, t_lis lis, int count)
 	}
 }
 
+void	ft_markseq(t_lis lis, int count)
+{
+	int	max;
+	int	i;
+	int	start;
+
+	max = 0;
+	i = 0;
+	start = 0;
+	while (i < count)
+	{
+		if (lis.lissize[i] > max)
+		{
+			max = lis.lissize[i];
+			start = i;
+		}
+		i++;
+	}
+	i = 0;
+	while (i < max)
+	{
+		lis.seq[start] = 1;
+		start = lis.previndex[start];
+		i++;
+	}
+}
+
 t_lis	ft_lis(int *arr, int count)
 {
 	t_lis	lis;
 
 	lis = ft_getlis(arr, count);
 	ft_filllis(arr, lis, count);
+	ft_markseq(lis, count);
+	free(lis.lissize);
+	free(lis.previndex);
 	return (lis);
 }
-
-// int	main(void)
-// {
-// 	int i = 0;
-// 	t_lis	lis;
-// 	int	arr[] = {-9 ,13, 94, -21, -99, -23, -84, 95, 49, -18, 11, 18, -59, 29, -39, -26, 83, -98, 46, 96, -10, 79, -94, -74, 66, -73, 39, -82, 87, -24, -55, -25, 78, -16, 24, -44, 3, -85, 74, 43, -97, 64, -62, -89, 55, -42, 61, -4, 40, -46, 52, 6, -58, 9, 44, 45, -19, 98, -1, 32, -79, 17, 30, 71, 82, 31, 53, -37, 8, 0, -13, -70, -63, -57, -92, -8, -77, -83, -5, 5, -30, -35, 59, -47, 51, -29, 2, -49, -90, 100, -96, -100, 20, 56, -87, -80, 10, -11, -43, -27};
-// 	lis = ft_lis(arr, 100);
-// 	while (i < 100)
-// 	{
-// 		printf("index : %d\t number : %d\t lis : %d\tprevindex : %d\n", i, arr[i], lis.lissize[i], lis.previndex[i]);
-// 		i++;
-// 	}
-// }

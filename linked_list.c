@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:04:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/12 13:44:15 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/14 15:46:58 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,14 @@ void	ft_addback(t_node **head, t_node *node)
 		tmp = tmp->next;
 	tmp->next = node;
 	node->index = tmp->index + 1;
+}
+
+t_node	*ft_lastnode(t_node **head)
+{
+	t_node	*last;
+
+	last = *head;
+	while (last->next)
+		last = last->next;
+	return (last);
 }
