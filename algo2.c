@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:12:02 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/14 16:08:38 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/18 16:13:37 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,5 @@ t_lis	ft_lis(int *arr, int count)
 	lis = ft_getlis(arr, count);
 	ft_filllis(arr, lis, count);
 	ft_markseq(lis, count);
-	free(lis.lissize);
-	free(lis.previndex);
 	return (lis);
 }

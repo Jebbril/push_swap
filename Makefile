@@ -6,11 +6,11 @@
 #    By: orakib <orakib@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 17:36:19 by orakib            #+#    #+#              #
-#    Updated: 2023/01/14 18:32:24 by orakib           ###   ########.fr        #
+#    Updated: 2023/01/16 16:15:50 by orakib           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-$(NAME) : algo3.c push_swap.c
+$(NAME) : algo3.c *.c
 		cc *.c -o $(NAME)

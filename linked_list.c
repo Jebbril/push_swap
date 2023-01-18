@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:04:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/14 15:46:58 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/18 14:30:04 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_node	*ft_newnode(int value)
 		return (NULL);
 	new->value = value;
 	new->index = 0;
+	new->besta = 0;
+	new->bestb = 0;
 	new->next = NULL;
 	return (new);
 }

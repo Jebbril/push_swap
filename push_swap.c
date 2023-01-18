@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:56:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/14 18:33:56 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/18 17:41:30 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_addtoa(int *arr, t_lis lis, t_node **stack_a, int co)
 
 	i = 0;
 	*stack_a = ft_newnode(arr[i++]);
+	if (lis.seq[0] == 1)
+		(*stack_a)->lis = 1;
 	while (i < co)
 	{
 		tmp = ft_newnode(arr[i]);
@@ -131,8 +133,7 @@ int	main(int ac, char **av)
 	ft_addtoa(arr, lis, stack_a, count);
 	free(arr);
 	push_unmarked(stack_a, stack_b);
-	pushback(stack_a, stack_b);
-	ft_sort(stack_a, stack_b);
+	bestmoveb(stack_a, stack_b);
 	tmpa = *stack_a;
 	while (tmpa != NULL)
 	{
@@ -143,7 +144,7 @@ int	main(int ac, char **av)
 	tmpb = *stack_b;
 	while (tmpb != NULL)
 	{
-		printf("index : %d\t number : %d\t marked : %d\n", tmpb->index, tmpb->value, tmpb->lis);
+		printf("index : %d\t number : %d\t marked : %d\t bestb : %d\n", tmpb->index, tmpb->value, tmpb->lis, tmpb->bestb);
 		tmpb = tmpb->next;
 	}
 	system("leaks push_swap");
