@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:19:11 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/18 17:40:25 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:50:19 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ int		ft_countelm(char **str);
 t_lis	ft_getlis(int *arr, int count);
 void	ft_filllis(int *arr, t_lis lis, int count);
 t_lis	ft_lis(int *arr, int count);
+void	index_stack(t_node **stack);
 void	push_unmarked(t_node **stack_a, t_node **stack_b);
-void	bestmoveb(t_node **stack_a, t_node **stack_b);
+void	bestmoveb(t_node **stack_b);
+void	bestmovea(t_node **stack_a, t_node **stack_b);
 
 #endif

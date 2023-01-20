@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:56:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/18 17:41:30 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:23:57 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,8 @@ int	main(int ac, char **av)
 	ft_addtoa(arr, lis, stack_a, count);
 	free(arr);
 	push_unmarked(stack_a, stack_b);
-	bestmoveb(stack_a, stack_b);
+	bestmoveb(stack_b);
+	bestmovea(stack_a, stack_b);
 	tmpa = *stack_a;
 	while (tmpa != NULL)
 	{
@@ -144,7 +145,7 @@ int	main(int ac, char **av)
 	tmpb = *stack_b;
 	while (tmpb != NULL)
 	{
-		printf("index : %d\t number : %d\t marked : %d\t bestb : %d\n", tmpb->index, tmpb->value, tmpb->lis, tmpb->bestb);
+		printf("index : %d\t number : %d\t marked : %d\t bestb : %d\t besta : %d\n", tmpb->index, tmpb->value, tmpb->lis, tmpb->bestb, tmpb->besta);
 		tmpb = tmpb->next;
 	}
 	system("leaks push_swap");

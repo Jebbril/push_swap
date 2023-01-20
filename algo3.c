@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:12:40 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/18 17:56:16 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:35:42 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	push_unmarked(t_node **stack_a, t_node **stack_b)
 	index_stack(stack_b);
 }
 
-void	bestmoveb(t_node **stack_a, t_node **stack_b)
+void	bestmoveb(t_node **stack_b)
 {
 	t_node	*tmp;
 	int		middle;
@@ -67,19 +67,28 @@ void	bestmoveb(t_node **stack_a, t_node **stack_b)
 void	bestmovea(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*tmp;
+	t_node	*tmpa;
 	int		middle;
-	int		count;
-	int		i;
 
-	i = 0;
-	count = ft_lastnode(stack_a)->index + 1;
-	middle = count / 2;
+	middle = (ft_lastnode(stack_a)->index + 1) / 2;
 	tmp = *stack_b;
+	tmpa = *stack_a;
 	while (tmp)
 	{
 		if (tmp->value < (*stack_a)->value)
 			tmp->besta = 0;
-		else if (tmp->value > ft_lastnode(stack_a))
+		else if (tmp->value > ft_lastnode(stack_a)->value)
 			tmp->besta = 1;
+		else
+		{
+			while (tmp->value > tmpa->value)
+				tmpa = tmpa->next;
+			if (tmpa->index <= middle)
+				tmp->besta = tmpa->index;
+			else
+				tmp->besta = (ft_lastnode(stack_a)->index + 1) - tmpa->index;
+		}
+		tmpa = *stack_a;
+		tmp = tmp->next;
 	}
 }
