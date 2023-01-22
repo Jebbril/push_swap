@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:19:11 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/20 17:50:19 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/22 17:45:27 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_node
 	int				lis;
 	int				besta;
 	int				bestb;
+	int				bestmove;
 	struct s_node	*next;
 
 }	t_node;
@@ -81,5 +82,9 @@ void	index_stack(t_node **stack);
 void	push_unmarked(t_node **stack_a, t_node **stack_b);
 void	bestmoveb(t_node **stack_b);
 void	bestmovea(t_node **stack_a, t_node **stack_b);
+void	baplusbb(t_node **stack_b);
+t_node	*findbest(t_node **stack_b);
+void	movebest(t_node **stack_a, t_node **stack_b);
+void	moveall(t_node **stack_a, t_node **stack_b);
 
 #endif

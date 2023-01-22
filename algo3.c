@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:12:40 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/20 17:35:42 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/22 16:55:39 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	bestmoveb(t_node **stack_b)
 		if (tmp->index <= middle)
 			tmp->bestb = tmp->index;
 		else
-			tmp->bestb = count - tmp->index;
+			tmp->bestb = (count - tmp->index) * -1;
 		tmp = tmp->next;
 	}
 }
@@ -78,7 +78,7 @@ void	bestmovea(t_node **stack_a, t_node **stack_b)
 		if (tmp->value < (*stack_a)->value)
 			tmp->besta = 0;
 		else if (tmp->value > ft_lastnode(stack_a)->value)
-			tmp->besta = 1;
+			tmp->besta = 0;
 		else
 		{
 			while (tmp->value > tmpa->value)
@@ -86,7 +86,7 @@ void	bestmovea(t_node **stack_a, t_node **stack_b)
 			if (tmpa->index <= middle)
 				tmp->besta = tmpa->index;
 			else
-				tmp->besta = (ft_lastnode(stack_a)->index + 1) - tmpa->index;
+				tmp->besta = ((ft_lastnode(stack_a)->index + 1) - tmpa->index) * -1;
 		}
 		tmpa = *stack_a;
 		tmp = tmp->next;
