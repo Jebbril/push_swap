@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:19:11 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/26 13:32:54 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:01:40 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 char	**ft_joinsplit(int ac, char **av);
 int		ft_countelm(char **str);
-t_lis	ft_getlis(int *arr, int count);
+t_lis	ft_getlis(int count);
 void	ft_filllis(int *arr, t_lis lis, int count);
 t_lis	ft_lis(int *arr, int count);
 void	index_stack(t_node **stack);
@@ -85,4 +85,7 @@ void	bestmovea(t_node **stack_a, t_node **stack_b);
 void	baplusbb(t_node **stack_b);
 t_node	*findbest(t_node **stack_b);
 t_node	*get_next(t_node **stack, t_node *node);
+t_node	*get_max(t_node **stack);
+t_node	*get_min(t_node **stack);
+
 #endif

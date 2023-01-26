@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:12:40 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/26 13:50:29 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:02:10 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	push_unmarked(t_node **stack_a, t_node **stack_b)
 	int	last;
 	int	i;
 
+	i = 0;
 	last = ft_lastnode(stack_a)->index;
 	while (i <= last)
 	{
@@ -64,38 +65,6 @@ void	bestmoveb(t_node **stack_b)
 	}
 }
 
-t_node	*get_max(t_node **stack)
-{
-	t_node	*tmp;
-	t_node	*max;
-
-	tmp = *stack;
-	max = *stack;
-	while (tmp)
-	{
-		if (tmp->value > max->value)
-			max = tmp;
-		tmp = tmp->next;
-	}
-	return (max);
-}
-
-t_node	*get_min(t_node **stack)
-{
-	t_node	*tmp;
-	t_node	*min;
-
-	tmp = *stack;
-	min = *stack;
-	while (tmp)
-	{
-		if (tmp->value < min->value)
-			min = tmp;
-		tmp = tmp->next;
-	}
-	return (min);
-}
-
 t_node	*get_next(t_node **stack, t_node *node)
 {
 	t_node	*next;
@@ -103,7 +72,7 @@ t_node	*get_next(t_node **stack, t_node *node)
 
 	tmp = *stack;
 	next = get_max(stack);
-	if(node->value > next->value)
+	if (node->value > next->value)
 		return (get_min(stack));
 	while (tmp)
 	{

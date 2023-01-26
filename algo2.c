@@ -6,13 +6,13 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:12:02 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/20 16:24:52 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:01:29 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_lis	ft_getlis(int *arr, int count)
+t_lis	ft_getlis(int count)
 {
 	t_lis	lis;
 	int		i;
@@ -87,7 +87,7 @@ t_lis	ft_lis(int *arr, int count)
 {
 	t_lis	lis;
 
-	lis = ft_getlis(arr, count);
+	lis = ft_getlis(count);
 	ft_filllis(arr, lis, count);
 	ft_markseq(lis, count);
 	return (lis);

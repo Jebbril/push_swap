@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:08:34 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/05 18:39:42 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/26 15:03:02 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	ft_sb(t_node **stack_b)
 {
 	t_node	*tmp;
 
+	tmp = *stack_b;
 	if (tmp == NULL || tmp->next == NULL)
 		return ;
-	tmp = *stack_b;
 	*stack_b = (*stack_b)->next;
 	tmp->next = (*stack_b)->next;
 	(*stack_b)->next = tmp;

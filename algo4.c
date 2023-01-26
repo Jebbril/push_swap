@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:39:43 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/22 19:22:06 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/26 14:13:06 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,36 @@ t_node	*findbest(t_node **stack_b)
 		tmp = tmp->next;
 	}
 	return (best);
+}
+
+t_node	*get_max(t_node **stack)
+{
+	t_node	*tmp;
+	t_node	*max;
+
+	tmp = *stack;
+	max = *stack;
+	while (tmp)
+	{
+		if (tmp->value > max->value)
+			max = tmp;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
+t_node	*get_min(t_node **stack)
+{
+	t_node	*tmp;
+	t_node	*min;
+
+	tmp = *stack;
+	min = *stack;
+	while (tmp)
+	{
+		if (tmp->value < min->value)
+			min = tmp;
+		tmp = tmp->next;
+	}
+	return (min);
 }
