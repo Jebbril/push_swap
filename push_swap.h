@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:19:11 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/22 17:45:27 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/26 13:32:54 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,5 @@ void	bestmoveb(t_node **stack_b);
 void	bestmovea(t_node **stack_a, t_node **stack_b);
 void	baplusbb(t_node **stack_b);
 t_node	*findbest(t_node **stack_b);
-void	movebest(t_node **stack_a, t_node **stack_b);
-void	moveall(t_node **stack_a, t_node **stack_b);
-
+t_node	*get_next(t_node **stack, t_node *node);
 #endif

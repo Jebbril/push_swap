@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:56:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/22 18:10:37 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/26 13:38:39 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ int	main(int ac, char **av)
 	bestmoveb(stack_b);
 	bestmovea(stack_a, stack_b);
 	baplusbb(stack_b);
-	// moveall(stack_a,stack_b);
 	tmpa = *stack_a;
 	while (tmpa != NULL)
 	{
@@ -147,7 +146,7 @@ int	main(int ac, char **av)
 	tmpb = *stack_b;
 	while (tmpb != NULL)
 	{
-		printf("index : %d\t number : %d\t marked : %d\t bestb : %d\t besta : %d\t bestmove : %d\n", tmpb->index, tmpb->value, tmpb->lis, tmpb->bestb, tmpb->besta, tmpb->bestmove);
+		printf("index : %d\t number : %d\t marked : %d\t bestb : %d\t besta : %d\t bestmove : %d\t next : %d\n", tmpb->index, tmpb->value, tmpb->lis, tmpb->bestb, tmpb->besta, tmpb->bestmove, get_next(stack_a, tmpb)->value);
 		tmpb = tmpb->next;
 	}
 	system("leaks push_swap");
