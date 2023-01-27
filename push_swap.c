@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:56:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/26 13:38:39 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/27 18:03:42 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,10 @@ int	main(int ac, char **av)
 	ft_addtoa(arr, lis, stack_a, count);
 	free(arr);
 	push_unmarked(stack_a, stack_b);
-	bestmoveb(stack_b);
-	bestmovea(stack_a, stack_b);
-	baplusbb(stack_b);
+	// bestmoveb(stack_b);
+	// bestmovea(stack_a, stack_b);
+	// baplusbb(stack_b);
+	push_all(stack_a,stack_b);
 	tmpa = *stack_a;
 	while (tmpa != NULL)
 	{
