@@ -6,11 +6,27 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:12:35 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/28 19:16:45 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/28 19:37:06 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	rr_rrr(t_node **stack_a, t_node **stack_b, t_node *best)
+{
+	while (best->besta > 0 && best->bestb > 0)
+	{
+		rr(stack_a, stack_b);
+		best->besta--;
+		best->bestb--;
+	}
+	while (best->besta < 0 && best->bestb < 0)
+	{
+		rrr(stack_a, stack_b);
+		best->besta++;
+		best->bestb++;
+	}
+}
 
 void	rdy_stacks(t_node **stack_a, t_node **stack_b, t_node *best)
 {
@@ -53,6 +69,7 @@ void	push_best(t_node **stack_a, t_node **stack_b)
 			best = tmp;
 		tmp = tmp->next;
 	}
+	rr_rrr(stack_a, stack_b, best);
 	rdy_stacks(stack_a, stack_b, best);
 	pa(stack_a, stack_b);
 }
