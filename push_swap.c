@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:56:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/27 18:03:42 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/28 15:15:41 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ int	main(int ac, char **av)
 	t_node	**stack_b;
 	int		count;
 	t_lis	lis;
-	t_node	*tmpa;
-	t_node	*tmpb;
+	// t_node	*tmpa;
+	// t_node	*tmpb;
 
 	i = 0;
 	count = 0;
@@ -137,19 +137,19 @@ int	main(int ac, char **av)
 	// bestmovea(stack_a, stack_b);
 	// baplusbb(stack_b);
 	push_all(stack_a,stack_b);
-	tmpa = *stack_a;
-	while (tmpa != NULL)
-	{
-		printf("index : %d\t number : %d\t marked : %d\n", tmpa->index, tmpa->value, tmpa->lis);
-		tmpa = tmpa->next;
-	}
-	printf("\n");
-	tmpb = *stack_b;
-	while (tmpb != NULL)
-	{
-		printf("index : %d\t number : %d\t marked : %d\t bestb : %d\t besta : %d\t bestmove : %d\t next : %d\n", tmpb->index, tmpb->value, tmpb->lis, tmpb->bestb, tmpb->besta, tmpb->bestmove, get_next(stack_a, tmpb)->value);
-		tmpb = tmpb->next;
-	}
-	system("leaks push_swap");
+	// tmpa = *stack_a;
+	// while (tmpa != NULL)
+	// {
+	// 	printf("index : %d\t number : %d\t marked : %d\n", tmpa->index, tmpa->value, tmpa->lis);
+	// 	tmpa = tmpa->next;
+	// }
+	// printf("\n");
+	// tmpb = *stack_b;
+	// while (tmpb != NULL)
+	// {
+	// 	printf("index : %d\t number : %d\t marked : %d\t bestb : %d\t besta : %d\t bestmove : %d\t next : %d\n", tmpb->index, tmpb->value, tmpb->lis, tmpb->bestb, tmpb->besta, tmpb->bestmove, get_next(stack_a, tmpb)->value);
+	// 	tmpb = tmpb->next;
+	// }
+	// system("leaks push_swap");
 	return (0);
 }
