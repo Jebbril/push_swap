@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:12:02 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/28 19:28:45 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/29 15:27:09 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_lis	ft_lis(int *arr, int count)
 {
 	t_lis	lis;
 
-	lis = ft_getlis(count);
+	lis = ft_getlis(count );
 	ft_filllis(arr, lis, count);
 	ft_markseq(lis, count);
 	return (lis);

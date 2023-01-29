@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:56:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/28 19:31:06 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/29 19:24:30 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,22 +122,26 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	lis = ft_lis(arr, count);
-	// while (i < count)
+	// while (i < count * 2)
 	// {
-	// 	printf("index : %d\t number : %d\t lis : %d\tprevindex : %d\t marked : %d\n", i, arr[i], lis.lissize[i], lis.previndex[i], lis.seq[i]);
+	// 	if (j == count)
+	// 		j = 0;
+	// 	printf("index : %d\t number : %d\t lis : %d\tprevindex : %d\t marked : %d\n", j, arr[j], lis.lissize[i], lis.previndex[i], lis.seq[i]);
 	// 	i++;
+	// 	j++;
 	// }
 	stack_a = malloc(sizeof(t_node));
 	stack_b = malloc(sizeof(t_node));
 	*stack_b = NULL;
 	ft_addtoa(arr, lis, stack_a, count);
 	free(arr);
-	push_unmarked(stack_a, stack_b);
+	pushtob(stack_a, stack_b);
+	// push_unmarked(stack_a, stack_b);
 	push_all(stack_a,stack_b);
 	// tmpa = *stack_a;
 	// while (tmpa != NULL)
 	// {
-	// 	printf("index : %d\t number : %d\t marked : %d\n", tmpa->index, tmpa->value, tmpa->lis);
+	// 	printf("index : %d\t number : %d\t marked : %d\t moves : %d\n", tmpa->index, tmpa->value, tmpa->lis, tmpa->bestb);
 	// 	tmpa = tmpa->next;
 	// }
 	// printf("\n");

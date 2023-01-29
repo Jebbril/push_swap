@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:19:11 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/28 19:29:04 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/29 18:56:50 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ t_node	*get_max(t_node **stack);
 t_node	*get_min(t_node **stack);
 void	push_all(t_node **stack_a, t_node **stack_b);
 void	push_best(t_node **stack_a, t_node **stack_b);
+void	pushtob(t_node **stack_a, t_node **stack_b);
 
 #endif
