@@ -6,30 +6,51 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:39:43 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/26 14:13:06 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/31 12:47:36 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	baplusbb(t_node **stack_b)
+void	bestmove(t_node **stack_b)
 {
 	t_node	*tmp;
-	int		absa;
-	int		absb;
 
 	tmp = *stack_b;
 	while (tmp)
 	{
-		absa = tmp->besta;
-		absb = tmp->bestb;
-		if (absa < 0)
-			absa = absa * -1;
-		if (absb < 0)
-			absb = absb * -1;
-		tmp->bestmove = absa + absb;
+		if (tmp->besta < 0 && tmp->bestb < 0)
+		{
+			if (tmp->besta < tmp->bestb)
+				tmp->bestmove = tmp->besta * -1;
+			else
+				tmp->bestmove = tmp->bestb * -1;
+		}
+		else if (tmp->besta > 0 && tmp->bestb > 0)
+		{
+			if (tmp->besta > tmp->bestb)
+				tmp->bestmove = tmp->besta;
+			else
+				tmp->bestmove = tmp->bestb;
+		}
+		else
+			baplusbb2(tmp);
 		tmp = tmp->next;
 	}
+}
+
+void	baplusbb2(t_node *tmp)
+{
+	int		absa;
+	int		absb;
+
+	absa = tmp->besta;
+	absb = tmp->bestb;
+	if (absa < 0)
+		absa = absa * -1;
+	if (absb < 0)
+		absb = absb * -1;
+	tmp->bestmove = absa + absb;
 }
 
 t_node	*findbest(t_node **stack_b)

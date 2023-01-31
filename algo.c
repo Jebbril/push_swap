@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 18:22:48 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/13 17:13:50 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/31 12:46:18 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ void	ft_sort(t_node **stack_a, t_node **stack_b)
 {
 	int	c;
 
+	(void)stack_b;
 	c = ft_celt(stack_a);
 	if (c == 2)
 		sort2(stack_a);
 	else if (c == 3)
 		sort3(stack_a);
-	else if (c == 4)
-		sort4(stack_a, stack_b);
-	// else if (c == 5)
-	// 	sort5(stack_a, stack_b);
-	// else if (c > 5 && c < 500)
-	// 	sort100(stack_a, stack_b);
-	// else if (c >= 500)
-	// 	sort500(stack_a, stack_b);
+	else if (c == 5)
+		sort5(stack_a, stack_b);
+	else
+	{
+		pushtob(stack_a, stack_b);
+		push_all(stack_a, stack_b);
+	}
 }
 
 void	sort2(t_node **stack_a)
@@ -76,30 +76,20 @@ void	sort3(t_node **stack_a)
 		rra(stack_a);
 }
 
-void	sort4(t_node **stack_a, t_node **stack_b)
+void	sort5(t_node **stack_a, t_node **stack_b)
 {
-	int	i;
+	t_node	*tmp;
 
-	i = 0;
+	tmp = *stack_a;
+	if (tmp->value < tmp->next->value
+		&& tmp->next->value < tmp->next->next->value
+		&& tmp->next->next->value < tmp->next->next->next->value
+		&& tmp->next->next->next->value < tmp->next->next->next->next->value)
+		return ;
+	pb(stack_a, stack_b);
 	pb(stack_a, stack_b);
 	sort3(stack_a);
-	if ((*stack_b)->value < (*stack_a)->value)
-		pa(stack_a, stack_b);
-	else if ((*stack_b)->value > (*stack_a)->next->next->value)
-	{
-		pa(stack_a, stack_b);
-		ra(stack_a);
-	}
-	else
-	{
-		while (!((*stack_b)->value < (*stack_a)->value
-				&& (*stack_b)->value > (*stack_a)->next->next->value))
-		{
-			ra(stack_a);
-			i++;
-		}
-		pa(stack_a, stack_b);
-		while (--i >= 0)
-			rra(stack_a);
-	}
+	index_stack(stack_a);
+	index_stack(stack_b);
+	push_all(stack_a, stack_b);
 }

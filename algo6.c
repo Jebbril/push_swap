@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:36:16 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/29 19:16:35 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/31 12:48:00 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	pushonetob(t_node **stack_a, t_node **stack_b, t_node *tmp)
 
 	i = 0;
 	middle = (ft_lastnode(stack_a)->index + 1) / 2;
-	if (tmp->index < middle)
+	if (tmp->index <= middle)
 	{
 		while (i < tmp->index)
 		{
@@ -43,7 +43,7 @@ void	pushtob(t_node **stack_a, t_node **stack_b)
 	t_node	*tmp;
 
 	tmp = *stack_a;
-	while(tmp)
+	while (tmp)
 	{
 		if (tmp->lis == 0)
 		{

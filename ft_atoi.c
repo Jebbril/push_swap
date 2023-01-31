@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 10:33:53 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/04 13:20:10 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/31 14:01:49 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_spc(const char *str)
 	return (i);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	unsigned long	res;
 	int				sign;

@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 17:12:02 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/29 15:27:09 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/31 13:49:33 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_lis	ft_getlis(int count)
 	lis.lissize = malloc(count * sizeof(int));
 	lis.previndex = malloc(count * sizeof(int));
 	lis.seq = malloc(count * sizeof(int));
+	if (!lis.lissize || !lis.previndex || !lis.seq)
+		exit(1);
 	while (i < count)
 	{
 		lis.lissize[i] = 1;
@@ -67,10 +69,10 @@ void	ft_markseq(t_lis lis, int count)
 	start = 0;
 	while (i < count)
 	{
-		if (lis.lissize[i] > max)
+		if (lis.lissize[count - 1 - i] > max)
 		{
-			max = lis.lissize[i];
-			start = i;
+			max = lis.lissize[count - 1 - i];
+			start = count - 1 - i;
 		}
 		i++;
 	}
@@ -87,7 +89,7 @@ t_lis	ft_lis(int *arr, int count)
 {
 	t_lis	lis;
 
-	lis = ft_getlis(count );
+	lis = ft_getlis(count);
 	ft_filllis(arr, lis, count);
 	ft_markseq(lis, count);
 	return (lis);

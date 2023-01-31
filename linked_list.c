@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:04:41 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/23 18:47:10 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/31 13:50:01 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_node	*ft_newnode(int value)
 
 	new = malloc(sizeof(t_node));
 	if (!new)
-		return (NULL);
+		exit(1);
 	new->value = value;
 	new->index = 0;
 	new->besta = 0;

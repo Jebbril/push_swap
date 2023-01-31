@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:19:11 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/29 18:56:50 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/31 18:49:12 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ typedef struct s_lis
 	int	*seq;
 }	t_lis;
 
+typedef struct s_arr
+{
+	int	*arr;
+	int	i;
+	int	count;
+}	t_arr;
+
 typedef struct s_node
 {
 	int				value;
@@ -39,7 +46,7 @@ typedef struct s_node
 t_node	*ft_newnode(int value);
 t_node	*ft_lastnode(t_node **head);
 void	ft_addback(t_node **head, t_node *node);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 void	ft_addtoa(int *arr, t_lis lis, t_node **stack_a, int co);
 void	ft_sa(t_node **stack_a);
 void	ft_sb(t_node **stack_b);
@@ -90,5 +97,10 @@ t_node	*get_min(t_node **stack);
 void	push_all(t_node **stack_a, t_node **stack_b);
 void	push_best(t_node **stack_a, t_node **stack_b);
 void	pushtob(t_node **stack_a, t_node **stack_b);
+void	bestmove(t_node **stack_b);
+void	baplusbb2(t_node *tmp);
+void	free_stack(t_node **stack);
+void	free_lis(t_lis lis);
+void	free_all(t_node **stack_a, t_node **stack_b, t_lis lis, int *arr);
 
 #endif

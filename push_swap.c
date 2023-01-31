@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:56:31 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/29 19:24:30 by orakib           ###   ########.fr       */
+/*   Updated: 2023/01/31 15:34:03 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,78 +79,53 @@ int	*ft_getnumbers(int ac, char **av, int *co)
 	int		*arr;
 	char	**str;
 
-	i = 0;
-	if (ac > 1)
+	i = -1;
+	str = ft_joinsplit(ac, av);
+	*co = ft_countelm(str);
+	arr = malloc(*co * sizeof(int));
+	if (!arr || !str)
+		return (NULL);
+	while (str[++i])
 	{
-		str = ft_joinsplit(ac, av);
-		*co = ft_countelm(str);
-		arr = malloc(*co * sizeof(int));
-		while (str[i])
+		if (ft_checknumber(str[i]))
 		{
-			if (ft_checknumber(str[i]))
-			{
-				free(arr);
-				return (NULL);
-			}
-			arr[i] = ft_atoi(str[i]);
-			free(str[i]);
-			i++;
+			free(arr);
+			return (NULL);
 		}
-		free(str);
-		return (arr);
+		if (ft_atoi(str[i]) > 2147483647 || ft_atoi(str[i]) < -2147483647 -1)
+			return (NULL);
+		arr[i] = ft_atoi(str[i]);
+		free(str[i]);
 	}
-	return (NULL);
+	free(str);
+	return (arr);
 }
 
 int	main(int ac, char **av)
 {
-	int		i;
-	int		*arr;
+	t_arr	ar;
 	t_node	**stack_a;
 	t_node	**stack_b;
-	int		count;
 	t_lis	lis;
-	// t_node	*tmpa;
-	// t_node	*tmpb;
 
-	i = 0;
-	count = 0;
-	arr = ft_getnumbers(ac, av, &count);
-	if (!arr || ft_checkrepeat(arr, count) == 1)
+	ar.i = 0;
+	ar.count = 0;
+	if (ac <= 1)
+		return (0);
+	ar.arr = ft_getnumbers(ac, av, &ar.count);
+	if (!ar.arr || ft_checkrepeat(ar.arr, ar.count) == 1)
 	{
 		write(1, "Error\n", 6);
 		return (0);
 	}
-	lis = ft_lis(arr, count);
-	// while (i < count * 2)
-	// {
-	// 	if (j == count)
-	// 		j = 0;
-	// 	printf("index : %d\t number : %d\t lis : %d\tprevindex : %d\t marked : %d\n", j, arr[j], lis.lissize[i], lis.previndex[i], lis.seq[i]);
-	// 	i++;
-	// 	j++;
-	// }
 	stack_a = malloc(sizeof(t_node));
 	stack_b = malloc(sizeof(t_node));
+	if (!stack_a || !stack_b)
+		exit(1);
+	lis = ft_lis(ar.arr, ar.count);
 	*stack_b = NULL;
-	ft_addtoa(arr, lis, stack_a, count);
-	free(arr);
-	pushtob(stack_a, stack_b);
-	// push_unmarked(stack_a, stack_b);
-	push_all(stack_a,stack_b);
-	// tmpa = *stack_a;
-	// while (tmpa != NULL)
-	// {
-	// 	printf("index : %d\t number : %d\t marked : %d\t moves : %d\n", tmpa->index, tmpa->value, tmpa->lis, tmpa->bestb);
-	// 	tmpa = tmpa->next;
-	// }
-	// printf("\n");
-	// tmpb = *stack_b;
-	// while (tmpb != NULL)
-	// {
-	// 	printf("index : %d\t number : %d\t marked : %d\t bestb : %d\t besta : %d\t bestmove : %d\t next : %d\n", tmpb->index, tmpb->value, tmpb->lis, tmpb->bestb, tmpb->besta, tmpb->bestmove, get_next(stack_a, tmpb)->value);
-	// 	tmpb = tmpb->next;
-	// }
-	// system("leaks push_swap");
+	ft_addtoa(ar.arr, lis, stack_a, ar.count);
+	ft_sort(stack_a, stack_b);
+	free_all(stack_a, stack_b, lis, ar.arr);
 	return (0);
 }
