@@ -6,7 +6,7 @@
 /*   By: orakib <orakib@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 15:19:11 by orakib            #+#    #+#             */
-/*   Updated: 2023/01/31 18:49:12 by orakib           ###   ########.fr       */
+/*   Updated: 2023/02/01 14:34:42 by orakib           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "GNL/get_next_line.h"
 
 typedef struct s_lis
 {
@@ -45,6 +46,9 @@ typedef struct s_node
 
 t_node	*ft_newnode(int value);
 t_node	*ft_lastnode(t_node **head);
+int		ft_checknumber(char *str);
+int		ft_checkrepeat(int *arr, int co);
+int		*ft_getnumbers(int ac, char **av, int *co);
 void	ft_addback(t_node **head, t_node *node);
 long	ft_atoi(const char *str);
 void	ft_addtoa(int *arr, t_lis lis, t_node **stack_a, int co);
